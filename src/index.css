@@ -1,0 +1,25 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background: linear-gradient(180deg, rgba(242, 183, 1, 0.5) 0%, rgba(255, 255, 255, 0.5) 100%);
+  }
+}
+/* styles.css or your appropriate CSS file */
+.roboto-serif-heading {
+  font-family: "Roboto Serif", serif;
+  font-optical-sizing: auto;
+  font-weight: 400; /* Adjusted for better visibility */
+  font-style: normal;
+  font-variation-settings: "wdth" 100, "GRAD" 0;
+  font-size: 2rem; /* Adjust as needed */
+  line-height: 1.4; /* Improved readability */
+  letter-spacing: 0.05em; /* Slightly increased for clarity */
+  text-transform: uppercase; /* Optional for emphasis */
+  color: #333; /* Adjust to fit your design */
+  margin: 1.5rem 0; /* Adds spacing around the heading */
+}
+
