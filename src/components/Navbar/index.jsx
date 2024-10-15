@@ -70,6 +70,14 @@ function Navbar() {
     <div className="h-20 z-50 flex items-center justify-between w-full sticky top-0 bg-[#b9b9b9] bg-opacity-10 backdrop-blur-lg">
       {/* Logo and E-CELL */}
       <div className="flex items-center pl-6 no-select">
+
+         <a href="https://nitt.edu/" target="_blank" rel="noopener noreferrer">
+          <img
+            src="images/nit-logo.png"
+            alt="NIT Logo"
+            className="h-12 mr-3 pointer no-select"
+          />
+        </a>
         <a
           href="https://ecell-nitt.org/#"
           target="_blank"
