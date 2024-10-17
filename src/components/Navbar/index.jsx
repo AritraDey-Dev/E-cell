@@ -73,7 +73,7 @@ function Navbar() {
 
          <a href="https://nitt.edu/" target="_blank" rel="noopener noreferrer">
           <img
-            src="/public/nit-logo.png"
+            src="/nit-logo.png"
             alt="NIT Logo"
             className="h-12 mr-3 pointer no-select"
           />
