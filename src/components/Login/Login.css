@@ -1,0 +1,38 @@
+@keyframes slideIn {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes logoMove {
+    0% {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .logo {
+    animation: logoMove 1s ease forwards;
+  }
+  
+  .login-box {
+    background-color: black;
+    border-radius: 54px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 24rem;
+    animation: slideIn 1s ease forwards;
+  }
+  
+
+
