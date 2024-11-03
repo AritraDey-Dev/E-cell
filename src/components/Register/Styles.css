@@ -1,0 +1,53 @@
+@keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideInFromTop {
+    0% {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideInFromRight {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .logo {
+    animation: slideInFromTop 1s ease forwards; /* Use slideInFromTop here */
+  }
+  
+  .input-container {
+    animation: slideInFromLeft 1s ease forwards;
+  }
+  
+  .input-container:nth-child(n) {
+    animation-delay: 0.1s; /* Adjust for each input */
+  }
+  
+  .heading {
+    animation: slideInFromRight 1s ease forwards;
+  }
+  
+  .button {
+    animation: slideInFromRight 1s ease forwards;
+  }
+  

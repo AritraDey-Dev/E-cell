@@ -1,0 +1,154 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color:#E8D44F;
+    margin:0;
+    }
+}
+/* styles.css or your appropriate CSS file */
+.roboto-serif-heading {
+  font-family: "Roboto Serif", serif;
+  font-optical-sizing: auto;
+  font-weight: 400; /* Adjusted for better visibility */
+  font-style: normal;
+  font-variation-settings: "wdth" 100, "GRAD" 0;
+  font-size: 2rem; /* Adjust as needed */
+  line-height: 1.4; /* Improved readability */
+  letter-spacing: 0.05em; /* Slightly increased for clarity */
+  text-transform: uppercase; /* Optional for emphasis */
+  color: #333; /* Adjust to fit your design */
+  margin: 1.5rem 0; /* Adds spacing around the heading */
+}
+.playfair-display-heading{
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 400; /* Adjusted for better visibility */
+  font-style: normal;
+  font-variation-settings: "wdth" 100, "GRAD" 0;
+  font-size: 2rem; /* Adjust as needed */
+  line-height: 1.4; /* Improved readability */
+  letter-spacing: 0.05em; /* Slightly increased for clarity */
+  text-transform: uppercase; /* Optional for emphasis */
+  color: #333; /* Adjust to fit your design */
+  margin: 1.5rem 0; /* Adds spacing around the heading */
+}
+.text-1 {
+  font-family: 'IBM Plex Mono', monospace;
+  color: #000000;
+  font-weight:700;
+}
+.font-IBM{
+  font-family:'IBM Plex Mono', monospace;
+  
+}
+.font-alexandria{
+    font-family:'Alexandria',sans-serif;
+}
+.text-2 {
+  font-family: 'Alexandria', sans-serif; /* Alexandria font */
+  color: #000000;
+  font-weight:500;
+}
+
+.text-3 {
+  font-family: 'Inter', sans-serif; /* Inter font */
+  color: #000000; 
+
+ }
+/*Applynow text */
+
+.font-roboto {
+  font-family: 'Roboto', sans-serif;
+  font-family: Roboto;
+  font-size: 66px;
+  font-weight: 400;
+  line-height: 77.34px;
+  text-align: left;
+}
+.font-montserrat {
+  font-family: 'Montserrat', sans-serif;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-weight: 800;
+  text-align: left;
+
+}
+.font-roboto1 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
+}
+
+.no-select{
+  user-select:none;
+}
+
+/*About card css*/
+/* .cards-section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #f7d354;
+  padding: 2rem;
+} */
+
+.card-container {
+  background-color: #1b1b1b; /* Black background */
+  color: white;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  width: 300px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  position: relative;
+  text-align: left;
+}
+
+.card-container:hover {
+  transform: translateY(-10px); /* Hover effect */
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.card-title {
+  margin-left: 0.5rem;
+}
+
+.card-description {
+  font-size: 1rem;
+  color: #e0e0e0;
+}
+
+.card-container::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 1rem;
+  border: 2px solid white;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card-container:hover::before {
+  opacity: 1;
+}
+
+.card-icon {
+  font-size: 1.5rem;
+}
