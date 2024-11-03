@@ -48,7 +48,7 @@ function Footer() {
 
           {/* Footer bottom */}
           <div className="flex mt-4 justify-between items-center">
-            <p className="font-alexandria text-sm md:text-base flex items-center">
+            <div className="font-alexandria text-sm md:text-base flex items-center">
               <span className="border-r border-white-400 pr-4">© MADE BY ECELL</span>
               {/* Social Media Icons */}
               <div className="flex space-x-4 ml-4">
@@ -65,7 +65,7 @@ function Footer() {
                   <FaInstagram className="h-6 w-6" />
                 </a>
               </div>
-            </p>
+            </div>
             <div className="flex items-center">
               <div className="border-l border-white-400 pl-4">
                 <a href="https://nitt.edu/" aria-label="NITT Website" target="_blank" rel="noopener noreferrer">
