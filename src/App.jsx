@@ -6,6 +6,10 @@ import Header from './components/Header';
 import Description from './components/Description';
 import Applynow from './components/Applynow';
 import ApplyPage from './components/ApplyPage';
+import ForgotPassword from './components/forgotPassword';
+import Login from './components/login';
+import Signup from './components/signup';
+import VerifyOtp from './components/verify-email';
 
 function Home() {
   return (
@@ -44,11 +48,13 @@ function App() {
     <>
       <Navbar /> {/* Navbar will stay on all pages */}
       <Routes>
-        {/* Route for the home page */}
         <Route path="/" element={<Home />} />
-        
-        {/* Route for the /apply page, which will contain only the JobCard */}
         <Route path="/apply" element={<ApplyPage />} />
+        
+        <Route path="/verify-email" element={<VerifyOtp />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
       </Routes>
       <Footer /> {/* Footer will stay on all pages */}
     </>
