@@ -24,7 +24,15 @@ function ApplyPage() {
           job_link="https://forms.gle/AddtW8vLCkVfSrjD7"
           stipend="Stipend: Rs.10,000 - Rs.15,000"
         />
-        
+        <JobCard 
+          title="Marketing"
+          Company="ParadigmIT"
+          location="Hybrid"
+          skills={["Product Management"]}
+          postedOn="2024-11-14"
+          job_link="https://docs.google.com/forms/d/e/1FAIpQLSeMw06nWa4naJ-2oe_akyKRYxNa6JX7y0lqefch1S2TysaRVA/viewform?usp=sf_link"
+          stipend="Stipend: Rs.10,000"
+        />
       </div>
     </div>
   );

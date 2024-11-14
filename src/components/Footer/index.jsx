@@ -45,7 +45,7 @@ function Footer() {
           <div className="mb-4 md:w-1/3 text-right">
             <h3 className="text-lg font-bold">E-CELL</h3>
             <a href="https://ecell-nitt.org/#" className="hover:text-gray-400 mt-2 inline-block">
-              <img src="images/LOGO-FINAL.png" alt="E-Cell Website" className="h-16 w-auto mt-2 transition-transform transform hover:scale-105" />
+              <img src=".images/LOGO-FINAL.png" alt="E-Cell Website" className="h-16 w-auto mt-2 transition-transform transform hover:scale-105" />
             </a>
           </div>
         </div>

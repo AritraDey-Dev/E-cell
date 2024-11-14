@@ -49,6 +49,7 @@ function App() {
         
         {/* Route for the /apply page, which will contain only the JobCard */}
         <Route path="/apply" element={<ApplyPage />} />
+        
       </Routes>
       <Footer /> {/* Footer will stay on all pages */}
     </>

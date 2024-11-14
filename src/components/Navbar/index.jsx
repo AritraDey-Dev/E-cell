@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 function SocialLinks() {
   return (
@@ -33,7 +34,10 @@ function SocialLinks() {
 
 function Navbar() {
   const [sectionStack, setSectionStack] = useState([]);
-
+  const navigate = useNavigate(); // Use useNavigate correctly
+  const nav1 = () => {
+    navigate('/'); // Navigate to the home page
+  };
   const scrollToSection = (sectionId) => {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -94,7 +98,7 @@ function Navbar() {
       {/* Links and Social Media */}
       <div className="flex items-center font-semibold pr-6 space-x-6 no-select">
         <a
-          onClick={scrollToAboutUs}
+          onClick={nav1}
           className="relative text-gray-900 hover:text-black transition duration-300 group cursor-pointer"
         >
           About Us
