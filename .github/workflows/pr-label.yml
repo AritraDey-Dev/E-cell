@@ -1,0 +1,55 @@
+name: Check PR Title & Description
+
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+
+jobs:
+  check-pr-description:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check and label PR based on title and description
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const pr = context.payload.pull_request;
+            const title = pr.title ? pr.title.trim() : '';
+            const body = pr.body ? pr.body.trim() : '';
+            const label = 'do-not-merge/missing-description';
+
+            // Helper: Add label if not already present
+            async function addLabel() {
+              const labels = pr.labels.map(l => l.name);
+              if (!labels.includes(label)) {
+                await github.rest.issues.addLabels({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: pr.number,
+                  labels: [label],
+                });
+              }
+            }
+
+            // Helper: Remove label if present
+            async function removeLabel() {
+              try {
+                await github.rest.issues.removeLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: pr.number,
+                  name: label,
+                });
+              } catch (error) {
+                if (error.status !== 404) throw error;
+              }
+            }
+
+            // Validate PR title and body
+            if (!title || title.length < 5 || !body || body.length < 10) {
+              core.setFailed('❌ PR must have a meaningful title (at least 5 chars) and description (at least 10 chars).');
+              await addLabel();
+            } else {
+              console.log('✅ PR title and description look good.');
+              await removeLabel();
+            }

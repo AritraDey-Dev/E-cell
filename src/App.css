@@ -41,16 +41,22 @@
   color: #888;
 }
 
-
-
 @keyframes fade-in {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes slide-up {
-  0% { transform: translateY(20px); }
-  100% { transform: translateY(0); }
+  0% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .animate-fade-in {
@@ -64,19 +70,21 @@
 .font-baskerville {
   font-family: 'Baskervville', serif;
 }
-.raleway-fonts{
-  font-family: "Raleway", sans-serif;
+.raleway-fonts {
+  font-family: 'Raleway', sans-serif;
   font-optical-sizing: auto;
   font-weight: 100;
   font-style: normal;
 }
 
 .roboto-serif-heading {
-  font-family: "Roboto Serif", serif;
+  font-family: 'Roboto Serif', serif;
   font-optical-sizing: auto;
   font-weight: 400; /* Adjusted for better visibility */
   font-style: normal;
-  font-variation-settings: "wdth" 100, "GRAD" 0;
+  font-variation-settings:
+    'wdth' 100,
+    'GRAD' 0;
   font-size: 2rem; /* Adjust as needed */
   line-height: 1.4; /* Improved readability */
   letter-spacing: 0.05em; /* Slightly increased for clarity */
@@ -85,12 +93,11 @@
   margin: 1.5rem 0; /* Adds spacing around the heading */
 }
 .playfair-display {
-  font-family: "Playfair Display", serif;
+  font-family: 'Playfair Display', serif;
   font-optical-sizing: auto;
   font-weight: 400; /* Replace with a valid weight, e.g., 400, 700 */
   font-style: normal;
 }
-
 
 html {
   scroll-behavior: smooth;

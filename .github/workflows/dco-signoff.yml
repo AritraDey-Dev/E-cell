@@ -1,0 +1,85 @@
+name: DCO Sign-off Check
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  dco-check:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Get list of commits in the PR
+        id: get_commits
+        run: |
+          COMMITS=$(git log origin/${{ github.base_ref }}..HEAD --pretty=format:"%H")
+          echo "COMMITS<<EOF" >> $GITHUB_OUTPUT
+          echo "$COMMITS" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Check DCO Sign-offs
+        id: check_dco
+        run: |
+          echo "${{ steps.get_commits.outputs.COMMITS }}" | while read COMMIT; do
+            if ! git show --quiet $COMMIT | grep -q "Signed-off-by:"; then
+              echo "::error::❌ Commit $COMMIT is missing a Signed-off-by line."
+              echo "missing=true" >> $GITHUB_OUTPUT
+              exit 1
+            fi
+          done
+          echo "missing=false" >> $GITHUB_OUTPUT
+        continue-on-error: true
+
+      - name: Label PR accordingly
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const missing = "${{ steps.check_dco.outputs.missing }}" === "true";
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const prNumber = context.issue.number;
+
+            const yesLabel = "dco-signoff/yes";
+            const noLabel = "do-not-merge/dco-signoff";
+
+            const { data: currentLabels } = await github.rest.issues.listLabelsOnIssue({
+              owner, repo, issue_number: prNumber
+            });
+
+            const labelsToAdd = [];
+            const labelsToRemove = [];
+
+            if (missing) {
+              if (!currentLabels.find(l => l.name === noLabel)) {
+                labelsToAdd.push(noLabel);
+              }
+              if (currentLabels.find(l => l.name === yesLabel)) {
+                labelsToRemove.push(yesLabel);
+              }
+            } else {
+              if (!currentLabels.find(l => l.name === yesLabel)) {
+                labelsToAdd.push(yesLabel);
+              }
+              if (currentLabels.find(l => l.name === noLabel)) {
+                labelsToRemove.push(noLabel);
+              }
+            }
+
+            for (const label of labelsToAdd) {
+              await github.rest.issues.addLabels({ owner, repo, issue_number: prNumber, labels: [label] });
+            }
+
+            for (const label of labelsToRemove) {
+              await github.rest.issues.removeLabel({ owner, repo, issue_number: prNumber, name: label }).catch(() => {});
+            };

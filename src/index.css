@@ -4,16 +4,22 @@
 
 @layer base {
   body {
-    background: linear-gradient(180deg, rgba(255, 208, 68, 0.792) 0%, rgba(255, 255, 255, 0.5) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(255, 208, 68, 0.792) 0%,
+      rgba(255, 255, 255, 0.5) 100%
+    );
   }
 }
 
 .roboto-serif-heading {
-  font-family: "Roboto Serif", serif;
+  font-family: 'Roboto Serif', serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-variation-settings: "wdth" 100, "GRAD" 0;
+  font-variation-settings:
+    'wdth' 100,
+    'GRAD' 0;
   font-size: 1.5rem; /* Smaller for mobile */
   line-height: 1.3;
   letter-spacing: 0.04em;
@@ -23,11 +29,13 @@
 }
 
 .playfair-display-heading {
-  font-family: "Playfair Display", serif;
+  font-family: 'Playfair Display', serif;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  font-variation-settings: "wdth" 100, "GRAD" 0;
+  font-variation-settings:
+    'wdth' 100,
+    'GRAD' 0;
   font-size: 1.5rem; /* Smaller for mobile */
   line-height: 1.3;
   letter-spacing: 0.04em;
@@ -45,7 +53,8 @@ body {
 }
 
 @media (min-width: 768px) {
-  .roboto-serif-heading, .playfair-display-heading {
+  .roboto-serif-heading,
+  .playfair-display-heading {
     font-size: 2rem; /* Larger size for larger screens */
     line-height: 1.4;
     letter-spacing: 0.05em;
@@ -56,7 +65,8 @@ body {
 }
 
 @media (min-width: 1024px) {
-  .roboto-serif-heading, .playfair-display-heading {
+  .roboto-serif-heading,
+  .playfair-display-heading {
     font-size: 2.5rem; /* Even larger for very large screens */
     line-height: 1.5;
     margin: 2rem 0;

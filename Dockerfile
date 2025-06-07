@@ -1,20 +1,16 @@
-# Step 1: Use an official Node.js image as the base
-FROM node:18-alpine
-
-# Step 2: Set the working directory inside the container
+FROM node:18-alpine AS builder
 WORKDIR /app
-
-# Step 3: Copy the package.json and package-lock.json files
 COPY package*.json ./
-
-# Step 4: Install dependencies
 RUN npm install
-
-# Step 5: Copy the rest of the application files
 COPY . .
+RUN npm run build
 
-# Step 6: Expose port 5173
-EXPOSE 5173
+FROM nginx:alpine
+RUN apk update && \
+    apk upgrade && \
+    apk add --no-cache libxml2=2.13.4-r6 && \
+    rm -rf /var/cache/apk/*
 
-# Step 7: Start the application using the development server
-CMD ["npm", "run", "dev"]
+COPY --from=builder /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
