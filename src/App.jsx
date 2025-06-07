@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -23,7 +23,7 @@ function App() {
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
           e.preventDefault();
-          
+
           const targetElement = document.querySelector(this.getAttribute('href'));
           const offset = 100; // Adjust this value to move the scroll down
           const elementPosition = targetElement.getBoundingClientRect().top;
@@ -31,7 +31,7 @@ function App() {
 
           window.scrollTo({
             top: offsetPosition,
-            behavior: 'smooth'
+            behavior: 'smooth',
           });
         });
       });
@@ -46,10 +46,9 @@ function App() {
       <Routes>
         {/* Route for the home page */}
         <Route path="/" element={<Home />} />
-        
+
         {/* Route for the /apply page, which will contain only the JobCard */}
         <Route path="/apply" element={<ApplyPage />} />
-        
       </Routes>
       <Footer /> {/* Footer will stay on all pages */}
     </>

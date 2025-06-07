@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function SocialLinks() {
@@ -38,7 +38,7 @@ function Navbar() {
   const nav1 = () => {
     navigate('/'); // Navigate to the home page
   };
-  const scrollToSection = (sectionId) => {
+  const scrollToSection = sectionId => {
     const section = document.getElementById(sectionId);
     if (section) {
       const offset = window.innerHeight / 10;
@@ -51,47 +51,24 @@ function Navbar() {
 
       window.scrollTo({
         top: topPosition,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
     }
   };
 
-  const scrollToAboutUs = () => {
-    if (sectionStack.length > 1) {
-      const previousSection = sectionStack[sectionStack.length - 2];
-      setSectionStack(sectionStack.slice(0, -1)); // Remove the current section
-      scrollToSection(previousSection);
-    } else {
-      scrollToSection("about-us");
-    }
-  };
-
   const scrollToContactUs = () => {
-    scrollToSection("contact");
+    scrollToSection('contact');
   };
 
   return (
     <div className="h-20 z-50 flex items-center justify-between w-full sticky top-0 bg-[#b9b9b9] bg-opacity-10 backdrop-blur-lg">
       {/* Logo and E-CELL */}
       <div className="flex items-center pl-6 no-select">
-
-         <a href="https://nitt.edu/" target="_blank" rel="noopener noreferrer">
-          <img
-            src="/nit-logo.png"
-            alt="NIT Logo"
-            className="h-12 mr-3 pointer no-select"
-          />
+        <a href="https://nitt.edu/" target="_blank" rel="noopener noreferrer">
+          <img src="/nit-logo.png" alt="NIT Logo" className="h-12 mr-3 pointer no-select" />
         </a>
-        <a
-          href="https://ecell-nitt.org/#"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            src="/LOGO-FINAL.png"
-            alt="E-Cell Logo"
-            className="h-12 mr-3 no-select"
-          />
+        <a href="https://ecell-nitt.org/#" target="_blank" rel="noopener noreferrer">
+          <img src="/LOGO-FINAL.png" alt="E-Cell Logo" className="h-12 mr-3 no-select" />
         </a>
       </div>
 
