@@ -6,13 +6,21 @@ interface JobCardProps {
   title: string;
   Company: string;
   location: string;
-  skills: string[];
-  postedOn: string;
+  skills?: string[];
+  postedOn: string | number;
   job_link: string;
   stipend: string;
 }
 
-function JobCard({ title, Company, location, skills = [], postedOn, job_link, stipend }: JobCardProps) {
+const JobCard: React.FC<JobCardProps> = ({ 
+  title, 
+  Company, 
+  location, 
+  skills = [], 
+  postedOn, 
+  job_link, 
+  stipend 
+}) => {
   const date1 = dayjs(Date.now());
   const diffday = date1.diff(postedOn, 'day');
 
@@ -44,6 +52,6 @@ function JobCard({ title, Company, location, skills = [], postedOn, job_link, st
       </div>
     </div>
   );
-}
+};
 
 export default JobCard;

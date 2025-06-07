@@ -1,36 +1,57 @@
-import React from 'react';
-import JobCard from './JobCard'; // Import the JobCard component
+import React, { useState, useEffect } from 'react';
+import JobCard from './JobCard';
+import SearchBar from './SearchBar';
 
-function ApplyPage() {
+interface Job {
+  title: string;
+  Company: string;
+  location: string;
+  skills: string[];
+  postedOn: string | number;
+  job_link: string;
+  stipend: string;
+}
+
+const ApplyPage: React.FC = () => {
+  const [jobs, setJobs] = useState<Job[]>([]);
+  const [filteredJobs, setFilteredJobs] = useState<Job[]>([]);
+
+  useEffect(() => {
+    // TODO: Replace with actual API call
+    const mockJobs: Job[] = [
+      {
+        title: "Frontend Developer",
+        Company: "Tech Corp",
+        location: "Remote",
+        skills: ["React", "TypeScript", "CSS"],
+        postedOn: Date.now() - 2 * 24 * 60 * 60 * 1000, // 2 days ago
+        job_link: "#",
+        stipend: "$5000/month"
+      },
+      {
+        title: "Backend Developer",
+        Company: "Data Systems",
+        location: "In-Office",
+        skills: ["Node.js", "Python", "MongoDB"],
+        postedOn: Date.now() - 1 * 24 * 60 * 60 * 1000, // 1 day ago
+        job_link: "#",
+        stipend: "$6000/month"
+      }
+    ];
+    setJobs(mockJobs);
+    setFilteredJobs(mockJobs);
+  }, []);
+
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center no-select">
-      <h1 className="text-5xl font-barlow font-semibold text-black mb-40 text-center">
-        Explore Exciting Job Opportunities and Apply Now!
-      </h1>
-      
-      <div className="w-full px-10">
-        {/* Render multiple JobCard components */}
-        <JobCard 
-          title="Frontend & Backend"
-          Company="Trail"
-          location="Remote"
-          skills={["React", "CSS", "JavaScript"]}
-          postedOn="2024-10-12"
-          job_link="https://forms.gle/AddtW8vLCkVfSrjD7"
-          stipend="Stipend: Rs.10,000 - Rs.15,000"
-        />
-        <JobCard 
-          title="Marketing"
-          Company="ParadigmIT"
-          location="Hybrid"
-          skills={["Product Management"]}
-          postedOn="2024-11-14"
-          job_link="https://docs.google.com/forms/d/e/1FAIpQLSeMw06nWa4naJ-2oe_akyKRYxNa6JX7y0lqefch1S2TysaRVA/viewform?usp=sf_link"
-          stipend="Stipend: Rs.10,000"
-        />
+    <div className="min-h-screen bg-gray-50 py-8">
+      <SearchBar jobs={jobs} setFilteredJobs={setFilteredJobs} />
+      <div className="mt-8">
+        {filteredJobs.map((job, index) => (
+          <JobCard key={index} {...job} />
+        ))}
       </div>
     </div>
   );
-}
+};
 
 export default ApplyPage;

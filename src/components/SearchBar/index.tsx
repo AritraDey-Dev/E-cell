@@ -1,14 +1,18 @@
-import { useState, useEffect, ChangeEvent } from "react";
+import React, { useState, useEffect } from "react";
 
 interface Job {
     title: string;
+    Company: string;
     location: string;
-    [key: string]: any; // for other properties
+    skills: string[];
+    postedOn: string | number;
+    job_link: string;
+    stipend: string;
 }
 
 interface SearchBarProps {
     jobs: Job[];
-    setFilteredJobs: (jobs: Job[]) => void;
+    setFilteredJobs: React.Dispatch<React.SetStateAction<Job[]>>;
 }
 
 interface JobCriteria {
@@ -16,13 +20,13 @@ interface JobCriteria {
     location: string;
 }
 
-function SearchBar({ jobs, setFilteredJobs }: SearchBarProps) {
+const SearchBar: React.FC<SearchBarProps> = ({ jobs, setFilteredJobs }) => {
     const [jobCriteria, setJobCriteria] = useState<JobCriteria>({
         title: "",
         location: "",
     });
 
-    const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setJobCriteria((prevState) => ({
             ...prevState,
             [e.target.name]: e.target.value,
@@ -76,6 +80,6 @@ function SearchBar({ jobs, setFilteredJobs }: SearchBarProps) {
             </button>
         </div>
     );
-}
+};
 
 export default SearchBar;
