@@ -1,9 +1,18 @@
 import React from 'react';
 import dayjs from "dayjs";
 import { FaClock } from "react-icons/fa";
-import PropTypes from 'prop-types';
 
-function JobCard({ title, Company, location, skills = [], postedOn, job_link, stipend }) {
+interface JobCardProps {
+  title: string;
+  Company: string;
+  location: string;
+  skills: string[];
+  postedOn: string;
+  job_link: string;
+  stipend: string;
+}
+
+function JobCard({ title, Company, location, skills = [], postedOn, job_link, stipend }: JobCardProps) {
   const date1 = dayjs(Date.now());
   const diffday = date1.diff(postedOn, 'day');
 
@@ -36,14 +45,5 @@ function JobCard({ title, Company, location, skills = [], postedOn, job_link, st
     </div>
   );
 }
-
-JobCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  Company: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
-  skills: PropTypes.array.isRequired,
-  postedOn: PropTypes.string.isRequired,
-  job_link: PropTypes.string.isRequired,
-};
 
 export default JobCard;

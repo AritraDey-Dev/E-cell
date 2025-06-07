@@ -1,13 +1,28 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 
+interface Job {
+    title: string;
+    location: string;
+    [key: string]: any; // for other properties
+}
 
-function SearchBar({ jobs, setFilteredJobs }) {
-    const [jobCriteria, setJobCriteria] = useState({
+interface SearchBarProps {
+    jobs: Job[];
+    setFilteredJobs: (jobs: Job[]) => void;
+}
+
+interface JobCriteria {
+    title: string;
+    location: string;
+}
+
+function SearchBar({ jobs, setFilteredJobs }: SearchBarProps) {
+    const [jobCriteria, setJobCriteria] = useState<JobCriteria>({
         title: "",
         location: "",
     });
 
-    const handleChange = (e) => {
+    const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
         setJobCriteria((prevState) => ({
             ...prevState,
             [e.target.name]: e.target.value,

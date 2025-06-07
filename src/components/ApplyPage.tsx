@@ -3,17 +3,12 @@ import JobCard from './JobCard'; // Import the JobCard component
 
 function ApplyPage() {
   return (
-
     <div className="min-h-screen flex flex-col justify-center items-center no-select">
-      <h1 className="text-5xl font-barlow font-semibold text-black mb-40 text-center ">
-  Explore Exciting Job Opportunities and Apply Now!
-
-  <div className="">
-    
-  </div>
-</h1>
+      <h1 className="text-5xl font-barlow font-semibold text-black mb-40 text-center">
+        Explore Exciting Job Opportunities and Apply Now!
+      </h1>
       
-      <div className="w-full px-10" >
+      <div className="w-full px-10">
         {/* Render multiple JobCard components */}
         <JobCard 
           title="Frontend & Backend"

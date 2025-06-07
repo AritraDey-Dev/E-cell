@@ -21,12 +21,13 @@ function App() {
   useEffect(() => {
     const smoothScroll = () => {
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+        anchor.addEventListener('click', (e: Event) => {
           e.preventDefault();
           
-          const targetElement = document.querySelector(this.getAttribute('href'));
+          const targetId = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
+          const targetElement = document.querySelector(targetId!);
           const offset = 100; // Adjust this value to move the scroll down
-          const elementPosition = targetElement.getBoundingClientRect().top;
+          const elementPosition = targetElement?.getBoundingClientRect().top ?? 0;
           const offsetPosition = elementPosition + window.pageYOffset - offset;
 
           window.scrollTo({
