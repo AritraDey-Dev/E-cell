@@ -6,7 +6,6 @@ COPY . .
 RUN npm run build
 
 FROM nginx:alpine
-# Update libxml2 to fix vulnerabilities
 RUN apk update && \
     apk upgrade && \
     apk add --no-cache libxml2=2.13.4-r6 && \
