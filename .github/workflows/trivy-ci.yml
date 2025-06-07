@@ -7,7 +7,7 @@ on:
     branches: ['**']
 
 env:
-  IMAGE_NAME: sipportal
+  IMAGE_NAME: your-dockerhub-username/sipportal
 
 jobs:
   build-scan-push:
@@ -16,6 +16,9 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
+
+      - name: Set IMAGE_TAG from branch
+        run: echo "IMAGE_TAG=$(echo ${GITHUB_REF#refs/heads/} | tr '/' '-')" >> $GITHUB_ENV
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
@@ -28,17 +31,19 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t ${{ env.IMAGE_NAME }}:latest .
+          docker build \
+            -t ${{ env.IMAGE_NAME }}:latest \
+            -t ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} .
 
       - name: Scan Docker image for vulnerabilities with Trivy
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@v0.19.0
         with:
           image-ref: ${{ env.IMAGE_NAME }}:latest
           format: 'table'
-          exit-code: '1' # Fail if vulnerabilities found
-          severity: 'CRITICAL,HIGH' # Scan only critical and high severity
+          exit-code: '1'
+          severity: 'CRITICAL,HIGH'
 
-      - name: Push Docker image (only on main branch)
-        if: github.ref == 'refs/heads/main'
+      - name: Push Docker image (for all branches)
         run: |
           docker push ${{ env.IMAGE_NAME }}:latest
+          docker push ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
